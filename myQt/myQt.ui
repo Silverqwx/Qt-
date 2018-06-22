@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>965</width>
+    <height>645</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="Button_ok">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>90</y>
+      <x>710</x>
+      <y>120</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -27,24 +27,11 @@
      <string>ok</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>40</y>
-      <width>381</width>
-      <height>261</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="load_image">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>150</y>
+      <x>710</x>
+      <y>180</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -53,13 +40,32 @@
      <string>加载图片</string>
     </property>
    </widget>
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>89</x>
+      <y>69</y>
+      <width>451</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>600</width>
+     <width>965</width>
      <height>23</height>
     </rect>
    </property>
@@ -86,28 +92,12 @@
    <slot>Button_ok_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>480</x>
-     <y>147</y>
+     <x>710</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>467</x>
      <y>177</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>myQtClass</sender>
-   <signal>wheelsignal(QWheelEvent*event)</signal>
-   <receiver>myQtClass</receiver>
-   <slot>wheelEvent(QWheelEvent*event)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>39</x>
-     <y>64</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>51</x>
-     <y>63</y>
     </hint>
    </hints>
   </connection>
@@ -118,8 +108,8 @@
    <slot>load_image_Event()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>526</x>
-     <y>194</y>
+     <x>756</x>
+     <y>237</y>
     </hint>
     <hint type="destinationlabel">
      <x>526</x>

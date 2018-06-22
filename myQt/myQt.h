@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_myQt.h"
+#include <QWheelEvent>
 
 class myQt : public QMainWindow
 {
@@ -12,9 +13,11 @@ public:
 
 private:
 	Ui::myQtClass ui;
+	QImage *image;
+	double k;
 
 signals:
-	void wheelsignal(QWheelEvent *event);
+	//void wheelsignal(QWheelEvent *event);
 
 private slots:
 	void Button_ok_clicked();
