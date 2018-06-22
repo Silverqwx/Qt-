@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>myQtClass</class>
+ <widget class="QMainWindow" name="myQtClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>myQt</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="Button_ok">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>90</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ok</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>40</y>
+      <width>381</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="load_image">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>150</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>加载图片</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>600</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="myQt.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Button_ok</sender>
+   <signal>clicked()</signal>
+   <receiver>myQtClass</receiver>
+   <slot>Button_ok_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>472</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>467</x>
+     <y>177</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>myQtClass</sender>
+   <signal>wheelsignal(QWheelEvent*event)</signal>
+   <receiver>myQtClass</receiver>
+   <slot>wheelEvent(QWheelEvent*event)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>39</x>
+     <y>64</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>51</x>
+     <y>63</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <signal>wheelsignal(QWheelEvent*event)</signal>
+  <slot>Button_ok_clicked()</slot>
+  <slot>wheelEvent(QWheelEvent*event)</slot>
+ </slots>
+</ui>
