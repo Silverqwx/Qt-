@@ -23,4 +23,5 @@ private slots:
 	void Button_ok_clicked();
 	void wheelEvent(QWheelEvent *event);
 	void load_image_Event();
+	void mouseMoveEvent(QMouseEvent* event);
 };
