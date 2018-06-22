@@ -66,6 +66,7 @@ public:
         retranslateUi(myQtClass);
         QObject::connect(Button_ok, SIGNAL(clicked()), myQtClass, SLOT(Button_ok_clicked()));
         QObject::connect(myQtClass, SIGNAL(wheelsignal(QWheelEvent*event)), myQtClass, SLOT(wheelEvent(QWheelEvent*event)));
+        QObject::connect(load_image, SIGNAL(clicked()), myQtClass, SLOT(load_image_Event()));
 
         QMetaObject::connectSlotsByName(myQtClass);
     } // setupUi

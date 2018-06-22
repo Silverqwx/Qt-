@@ -86,8 +86,8 @@
    <slot>Button_ok_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>472</x>
-     <y>135</y>
+     <x>480</x>
+     <y>147</y>
     </hint>
     <hint type="destinationlabel">
      <x>467</x>
@@ -111,10 +111,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>load_image</sender>
+   <signal>clicked()</signal>
+   <receiver>myQtClass</receiver>
+   <slot>load_image_Event()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>526</x>
+     <y>194</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>526</x>
+     <y>208</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <signal>wheelsignal(QWheelEvent*event)</signal>
   <slot>Button_ok_clicked()</slot>
   <slot>wheelEvent(QWheelEvent*event)</slot>
+  <slot>load_image_Event()</slot>
  </slots>
 </ui>

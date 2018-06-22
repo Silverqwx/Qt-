@@ -15,3 +15,15 @@ void myQt::wheelEvent(QWheelEvent *event)
 {
 	ui.label->setText("111");
 }
+
+void myQt::load_image_Event()
+{
+	QString filename = "zoro.jpg";
+	QImage *image = new QImage;
+	if (!image->load(filename))
+	{
+		ui.label->setText("load image failed!!!");
+		return;
+	}
+	ui.label->setPixmap(QPixmap::fromImage(*image));
+}
