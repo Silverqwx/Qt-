@@ -23,8 +23,8 @@
    <widget class="QPushButton" name="Button_ok">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>120</y>
+      <x>90</x>
+      <y>510</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -36,8 +36,8 @@
    <widget class="QPushButton" name="load_image">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>180</y>
+      <x>220</x>
+      <y>510</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -49,23 +49,10 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>350</y>
+      <x>580</x>
+      <y>490</y>
       <width>191</width>
       <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TextLabel</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>50</y>
-      <width>449</width>
-      <height>359</height>
      </rect>
     </property>
     <property name="text">
@@ -105,28 +92,12 @@
    <slot>Button_ok_clicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>710</x>
-     <y>177</y>
+     <x>164</x>
+     <y>545</y>
     </hint>
     <hint type="destinationlabel">
      <x>467</x>
      <y>177</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>load_image</sender>
-   <signal>clicked()</signal>
-   <receiver>myQtClass</receiver>
-   <slot>load_image_Event()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>756</x>
-     <y>237</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>526</x>
-     <y>208</y>
     </hint>
    </hints>
   </connection>
@@ -136,5 +107,6 @@
   <slot>Button_ok_clicked()</slot>
   <slot>wheelEvent(QWheelEvent*event)</slot>
   <slot>load_image_Event()</slot>
+  <slot>pushbuttonEvent()</slot>
  </slots>
 </ui>

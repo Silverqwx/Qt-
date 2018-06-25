@@ -2,7 +2,8 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_myQt.h"
-#include <QWheelEvent>
+//#include <QWheelEvent>
+#include "myLabel.h"
 
 class myQt : public QMainWindow
 {
@@ -13,15 +14,19 @@ public:
 
 private:
 	Ui::myQtClass ui;
-	QImage *image;
-	double k;
+	myLabel *mylabel;
+	//QImage *image;
+	//double k;
 
 signals:
 	//void wheelsignal(QWheelEvent *event);
+	//void Coordinate_Update(QMouseEvent* event, QLabel *label);
 
 private slots:
 	void Button_ok_clicked();
-	void wheelEvent(QWheelEvent *event);
-	void load_image_Event();
-	void mouseMoveEvent(QMouseEvent* event);
+	//void wheelEvent(QWheelEvent *event);
+	//void load_image_Event();
+	//void mouseMoveEvent(QMouseEvent* event);
+	//void enterEvent(QEvent * event);
+	//void pushbuttonEvent();
 };

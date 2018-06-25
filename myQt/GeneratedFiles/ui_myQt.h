@@ -31,7 +31,6 @@ public:
     QPushButton *Button_ok;
     QPushButton *load_image;
     QLabel *label_2;
-    QLabel *label;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -47,16 +46,13 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         Button_ok = new QPushButton(centralWidget);
         Button_ok->setObjectName(QStringLiteral("Button_ok"));
-        Button_ok->setGeometry(QRect(710, 120, 75, 23));
+        Button_ok->setGeometry(QRect(90, 510, 75, 23));
         load_image = new QPushButton(centralWidget);
         load_image->setObjectName(QStringLiteral("load_image"));
-        load_image->setGeometry(QRect(710, 180, 75, 23));
+        load_image->setGeometry(QRect(220, 510, 75, 23));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(670, 350, 191, 31));
-        label = new QLabel(centralWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(60, 50, 449, 359));
+        label_2->setGeometry(QRect(580, 490, 191, 31));
         myQtClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(myQtClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -71,7 +67,6 @@ public:
 
         retranslateUi(myQtClass);
         QObject::connect(Button_ok, SIGNAL(clicked()), myQtClass, SLOT(Button_ok_clicked()));
-        QObject::connect(load_image, SIGNAL(clicked()), myQtClass, SLOT(load_image_Event()));
 
         QMetaObject::connectSlotsByName(myQtClass);
     } // setupUi
@@ -82,7 +77,6 @@ public:
         Button_ok->setText(QApplication::translate("myQtClass", "ok", Q_NULLPTR));
         load_image->setText(QApplication::translate("myQtClass", "\345\212\240\350\275\275\345\233\276\347\211\207", Q_NULLPTR));
         label_2->setText(QApplication::translate("myQtClass", "TextLabel", Q_NULLPTR));
-        label->setText(QApplication::translate("myQtClass", "TextLabel", Q_NULLPTR));
     } // retranslateUi
 
 };
