@@ -13,9 +13,10 @@ public:
 	int Ox, Oy, width, height;
 	double k;
 	ScaleImage();
-	//void init();
-	Mat scale(int _wheel_x, int _wheel_y, double _position_kx, double _position_ky, double _scale_k);
-
+	void init_resize_first();
+	void init_cut_first();
+	bool scale_resize_first(double _position_kx, double _position_ky, double _scale_k, Mat &_src);
+	bool scale_cut_first(double _position_kx, double _position_ky, double _scale_k, Mat &_src);
 };
 
 #endif // !SCALEIMAGE
