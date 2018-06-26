@@ -20,27 +20,27 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_myQt_t {
+struct qt_meta_stringdata_QWX_myQt_t {
     QByteArrayData data[3];
-    char stringdata0[24];
+    char stringdata0[28];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_myQt_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_QWX_myQt_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_myQt_t qt_meta_stringdata_myQt = {
+static const qt_meta_stringdata_QWX_myQt_t qt_meta_stringdata_QWX_myQt = {
     {
-QT_MOC_LITERAL(0, 0, 4), // "myQt"
-QT_MOC_LITERAL(1, 5, 17), // "Button_ok_clicked"
-QT_MOC_LITERAL(2, 23, 0) // ""
+QT_MOC_LITERAL(0, 0, 8), // "QWX_myQt"
+QT_MOC_LITERAL(1, 9, 17), // "Button_ok_clicked"
+QT_MOC_LITERAL(2, 27, 0) // ""
 
     },
-    "myQt\0Button_ok_clicked\0"
+    "QWX_myQt\0Button_ok_clicked\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_myQt[] = {
+static const uint qt_meta_data_QWX_myQt[] = {
 
  // content:
        7,       // revision
@@ -62,10 +62,10 @@ static const uint qt_meta_data_myQt[] = {
        0        // eod
 };
 
-void myQt::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void QWX_myQt::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        myQt *_t = static_cast<myQt *>(_o);
+        QWX_myQt *_t = static_cast<QWX_myQt *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->Button_ok_clicked(); break;
@@ -75,26 +75,26 @@ void myQt::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
     Q_UNUSED(_a);
 }
 
-const QMetaObject myQt::staticMetaObject = {
-    { &QMainWindow::staticMetaObject, qt_meta_stringdata_myQt.data,
-      qt_meta_data_myQt,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject QWX_myQt::staticMetaObject = {
+    { &QMainWindow::staticMetaObject, qt_meta_stringdata_QWX_myQt.data,
+      qt_meta_data_QWX_myQt,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *myQt::metaObject() const
+const QMetaObject *QWX_myQt::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *myQt::qt_metacast(const char *_clname)
+void *QWX_myQt::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_myQt.stringdata0))
-        return static_cast<void*>(const_cast< myQt*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_QWX_myQt.stringdata0))
+        return static_cast<void*>(const_cast< QWX_myQt*>(this));
     return QMainWindow::qt_metacast(_clname);
 }
 
-int myQt::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int QWX_myQt::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMainWindow::qt_metacall(_c, _id, _a);
     if (_id < 0)

@@ -20,27 +20,27 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_myLabel_t {
+struct qt_meta_stringdata_QWX_myLabel_t {
     QByteArrayData data[3];
-    char stringdata0[26];
+    char stringdata0[30];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_myLabel_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_QWX_myLabel_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_myLabel_t qt_meta_stringdata_myLabel = {
+static const qt_meta_stringdata_QWX_myLabel_t qt_meta_stringdata_QWX_myLabel = {
     {
-QT_MOC_LITERAL(0, 0, 7), // "myLabel"
-QT_MOC_LITERAL(1, 8, 16), // "load_image_Event"
-QT_MOC_LITERAL(2, 25, 0) // ""
+QT_MOC_LITERAL(0, 0, 11), // "QWX_myLabel"
+QT_MOC_LITERAL(1, 12, 16), // "load_image_Event"
+QT_MOC_LITERAL(2, 29, 0) // ""
 
     },
-    "myLabel\0load_image_Event\0"
+    "QWX_myLabel\0load_image_Event\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_myLabel[] = {
+static const uint qt_meta_data_QWX_myLabel[] = {
 
  // content:
        7,       // revision
@@ -62,10 +62,10 @@ static const uint qt_meta_data_myLabel[] = {
        0        // eod
 };
 
-void myLabel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void QWX_myLabel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        myLabel *_t = static_cast<myLabel *>(_o);
+        QWX_myLabel *_t = static_cast<QWX_myLabel *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->load_image_Event(); break;
@@ -75,26 +75,26 @@ void myLabel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
     Q_UNUSED(_a);
 }
 
-const QMetaObject myLabel::staticMetaObject = {
-    { &QLabel::staticMetaObject, qt_meta_stringdata_myLabel.data,
-      qt_meta_data_myLabel,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject QWX_myLabel::staticMetaObject = {
+    { &QLabel::staticMetaObject, qt_meta_stringdata_QWX_myLabel.data,
+      qt_meta_data_QWX_myLabel,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *myLabel::metaObject() const
+const QMetaObject *QWX_myLabel::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *myLabel::qt_metacast(const char *_clname)
+void *QWX_myLabel::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_myLabel.stringdata0))
-        return static_cast<void*>(const_cast< myLabel*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_QWX_myLabel.stringdata0))
+        return static_cast<void*>(const_cast< QWX_myLabel*>(this));
     return QLabel::qt_metacast(_clname);
 }
 
-int myLabel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int QWX_myLabel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QLabel::qt_metacall(_c, _id, _a);
     if (_id < 0)

@@ -5,17 +5,18 @@
 //#include <QWheelEvent>
 #include "myLabel.h"
 
-class myQt : public QMainWindow
+class QWX_myQt : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-	myQt(QWidget *parent = Q_NULLPTR);
+	QWX_myQt(QWidget *parent = Q_NULLPTR);
+	~QWX_myQt();
 
 private:
 	Ui::myQtClass ui;
-	myLabel *mylabel;
+	QWX_myLabel *mylabel;//标签对象
 
 private slots:
-	void Button_ok_clicked();
+	void Button_ok_clicked();//按钮ok的槽
 };
