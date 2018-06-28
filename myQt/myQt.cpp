@@ -13,8 +13,8 @@ QWX_myQt::QWX_myQt(QWidget *parent)
 	setMouseTracking(true);
 	mylabel->setMouseTracking(true);
 	//连接加载图像按钮的点击信号和标签对象的加载图像槽
-	connect(this->ui.load_image, SIGNAL(clicked()), this->mylabel, SLOT(load_image_Event()));
-	//connect(this, SIGNAL(Coordinate_Update(QMouseEvent *, QLabel *)), this->mylabel, SLOT(Coordinate_Update_Event(QMouseEvent* , QLabel *)));
+	connect(this->ui.load_rgb_image, SIGNAL(clicked()), this->mylabel, SLOT(load_rgb_image_Event()));
+	connect(this->ui.load_gray_image, SIGNAL(clicked()), this->mylabel, SLOT(load_gray_image_Event()));
 }
 
 QWX_myQt::~QWX_myQt()

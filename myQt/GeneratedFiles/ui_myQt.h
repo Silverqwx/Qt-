@@ -29,8 +29,9 @@ class Ui_myQtClass
 public:
     QWidget *centralWidget;
     QPushButton *Button_ok;
-    QPushButton *load_image;
+    QPushButton *load_rgb_image;
     QLabel *label_2;
+    QPushButton *load_gray_image;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -47,12 +48,15 @@ public:
         Button_ok = new QPushButton(centralWidget);
         Button_ok->setObjectName(QStringLiteral("Button_ok"));
         Button_ok->setGeometry(QRect(90, 510, 75, 23));
-        load_image = new QPushButton(centralWidget);
-        load_image->setObjectName(QStringLiteral("load_image"));
-        load_image->setGeometry(QRect(220, 510, 75, 23));
+        load_rgb_image = new QPushButton(centralWidget);
+        load_rgb_image->setObjectName(QStringLiteral("load_rgb_image"));
+        load_rgb_image->setGeometry(QRect(220, 510, 101, 23));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(580, 490, 191, 31));
+        load_gray_image = new QPushButton(centralWidget);
+        load_gray_image->setObjectName(QStringLiteral("load_gray_image"));
+        load_gray_image->setGeometry(QRect(220, 550, 101, 23));
         myQtClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(myQtClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -75,8 +79,9 @@ public:
     {
         myQtClass->setWindowTitle(QApplication::translate("myQtClass", "myQt", Q_NULLPTR));
         Button_ok->setText(QApplication::translate("myQtClass", "ok", Q_NULLPTR));
-        load_image->setText(QApplication::translate("myQtClass", "\345\212\240\350\275\275\345\233\276\347\211\207", Q_NULLPTR));
+        load_rgb_image->setText(QApplication::translate("myQtClass", "\345\212\240\350\275\275\345\275\251\350\211\262\345\233\276\347\211\207", Q_NULLPTR));
         label_2->setText(QApplication::translate("myQtClass", "TextLabel", Q_NULLPTR));
+        load_gray_image->setText(QApplication::translate("myQtClass", "\345\212\240\350\275\275\351\273\221\347\231\275\345\233\276\347\211\207", Q_NULLPTR));
     } // retranslateUi
 
 };

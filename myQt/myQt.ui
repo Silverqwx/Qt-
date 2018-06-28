@@ -33,17 +33,17 @@
      <string>ok</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="load_image">
+   <widget class="QPushButton" name="load_rgb_image">
     <property name="geometry">
      <rect>
       <x>220</x>
       <y>510</y>
-      <width>75</width>
+      <width>101</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
-     <string>加载图片</string>
+     <string>加载彩色图片</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -57,6 +57,19 @@
     </property>
     <property name="text">
      <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="load_gray_image">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>550</y>
+      <width>101</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>加载黑白图片</string>
     </property>
    </widget>
   </widget>

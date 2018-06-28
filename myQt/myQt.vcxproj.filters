@@ -47,12 +47,18 @@
     <ClCompile Include="ScaleImage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QWX_Optimized_Position_Orientation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_myQt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ScaleImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QWX_Optimized_Position_Orientation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

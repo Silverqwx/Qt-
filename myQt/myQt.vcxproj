@@ -126,6 +126,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="myLabel.cpp" />
     <ClCompile Include="myQt.cpp" />
+    <ClCompile Include="QWX_Optimized_Position_Orientation.cpp" />
     <ClCompile Include="ScaleImage.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_myQt.h" />
+    <ClInclude Include="QWX_Optimized_Position_Orientation.h" />
     <ClInclude Include="ScaleImage.h" />
     <QtMoc Include="myLabel.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets</IncludePath>

@@ -39,25 +39,87 @@ void QWX_myLabel::wheelEvent(QWheelEvent *event)
 	if (!err) return;//如果出错，返回，结束此次事件
 	//用Mat对象构造QImage对象，用于显示
 	uchar *pcv = (uchar*)scaled.data;
-	QImage temp(pcv, 400, 400, scaled.step, QImage::Format_RGB888);
+	QImage temp;
+	switch (scale_image.type)
+	{
+	case Gray:
+		temp = QImage(pcv, scale_image.resized.cols, scale_image.resized.rows, scale_image.resized.step, QImage::Format_Grayscale8);
+		break;
+	case RGB:
+		temp = QImage(pcv, scale_image.resized.cols, scale_image.resized.rows, scale_image.resized.step, QImage::Format_RGB888);
+		break;
+	default:
+		break;
+	}
 	setPixmap(QPixmap::fromImage(temp));
 }
 
-void QWX_myLabel::load_image_Event()
+void QWX_myLabel::load_image()
 {
 	scale_image.init_cut_first();//初始化
 	//用Mat对象构造QImage对象，用于显示
 	uchar *pcv = (uchar*)scale_image.resized.data;
-	QImage temp(pcv, scale_image.resized.cols, scale_image.resized.rows, scale_image.resized.step, QImage::Format_RGB888);
+	QImage temp;
+	switch (scale_image.type)
+	{
+	case Gray:
+		temp = QImage(pcv, scale_image.resized.cols, scale_image.resized.rows, scale_image.resized.step, QImage::Format_Grayscale8);
+		break;
+	case RGB:
+		temp = QImage(pcv, scale_image.resized.cols, scale_image.resized.rows, scale_image.resized.step, QImage::Format_RGB888);
+		break;
+	default:
+		break;
+	}
+	
 	setPixmap(QPixmap::fromImage(temp));
 	setAlignment(Qt::AlignLeft);//显示方式为左上对齐
+}
+
+void QWX_myLabel::load_rgb_image_Event()
+{
+	scale_image.type = RGB;
+	load_image();
+}
+
+void QWX_myLabel::load_gray_image_Event()
+{
+	scale_image.type = Gray;
+	load_image();
 }
 
 void QWX_myLabel::mouseMoveEvent(QMouseEvent* event)
 {
 	//获取鼠标在标签坐标系中的坐标位置并显示
 	QPoint ppos = event->pos();
-	QString str = QString::number(ppos.x(), 10) + "," + QString::number(ppos.y(), 10);
+	double kx = ppos.x() / 400.0,
+		ky = ppos.y() / 400.0;//计算鼠标当前位置在标签中的比例关系（相对位置）
+	Point position = scale_image.QWX_get_position(kx, ky);
+	if (position.y < 0 || position.y >= scale_image.image.rows || position.x < 0 || position.x >= scale_image.image.cols)
+	{
+		QString error_str = "out of the image!!!";
+		coordinate_label->setText(error_str);
+		return;
+	}
+	QString str = QString::number(position.y, 10) + "," + QString::number(position.x, 10) + "; ";
+	switch (scale_image.type)
+	{
+	case Gray:
+		str += QString::number(scale_image.image.at<uchar>(position.y, position.x), 10) + "; ";
+		break;
+	case RGB:
+		str += QString::number(scale_image.image.at<Vec3b>(position.y, position.x)[0], 10) + ",";
+		str += QString::number(scale_image.image.at<Vec3b>(position.y, position.x)[1], 10) + ",";
+		str += QString::number(scale_image.image.at<Vec3b>(position.y, position.x)[2], 10) + "; ";
+		break;
+	default:
+		break;
+	}
+	Mat kernel = Mat::eye(15, 15, CV_8UC1);
+	QWX_Optimized_Position_Orientation opo;
+	opo.QWX_init(kernel, 1, 20);
+	float optimized_orientation = opo.QWX_compute(scale_image.image, position.y, position.x);
+	str += QString::number(optimized_orientation);
 	coordinate_label->setText(str);
 }
 

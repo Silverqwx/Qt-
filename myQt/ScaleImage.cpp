@@ -8,8 +8,18 @@ QWX_ScaleImage::QWX_ScaleImage() :Ox(0), Oy(0), width(400), height(400), k(1.0)
 
 void QWX_ScaleImage::init_resize_first()
 {
-	image = imread("zoro.jpg");
-	cvtColor(image, image, CV_BGR2RGB);
+	switch (type)
+	{
+	case Gray:
+		image = imread("zoro.jpg", 0);
+		break;
+	case RGB:
+		image = imread("zoro.jpg");
+		cvtColor(image, image, CV_BGR2RGB);//变换三个通道，Mat和QImage的数据结构区别
+		break;
+	default:
+		break;
+	}
 	Ox = 0;
 	Oy = 0;
 	k = 1.0;
@@ -19,8 +29,19 @@ void QWX_ScaleImage::init_resize_first()
 
 void QWX_ScaleImage::init_cut_first()
 {
-	image = imread("zoro.jpg");
-	cvtColor(image, image, CV_BGR2RGB);//变换三个通道，Mat和QImage的数据结构区别
+	switch (type)
+	{
+	case Gray:
+		image = imread("eye.jpg", 0);
+		break;
+	case RGB:
+		image = imread("zoro.jpg");
+		cvtColor(image, image, CV_BGR2RGB);//变换三个通道，Mat和QImage的数据结构区别
+		break;
+	default:
+		break;
+	}	
+	
 	/*k = 400.0 / image.cols;
 	if (k <= 400.0 / image.rows)
 	{
@@ -33,6 +54,7 @@ void QWX_ScaleImage::init_cut_first()
 	width = 400.0 / k;
 	height = 400.0 / k;
 	resize(image, resized, Size(), k, k);
+	//copyMakeBorder(resized,)
 }
 
 bool QWX_ScaleImage::scale_resize_first(double _position_kx, double _position_ky, double _scale_k, Mat &_src)
@@ -76,7 +98,18 @@ bool QWX_ScaleImage::scale_cut_first(double _position_kx, double _position_ky, d
 	}
 	Ox = ceil(position_x - width*_position_kx);
 	Oy = ceil(position_y - height*_position_ky);//更新切割区域左上角坐标位置，向上取整，否则会出现图像朝右下偏移的现象
-	Mat cuted(height, width, CV_8UC3, Scalar(255, 255, 255));//用来保存切割后的图像
+	Mat cuted;
+	switch (type)
+	{
+	case Gray:
+		cuted = Mat(height, width, CV_8UC1, Scalar(255));//用来保存切割后的图像
+		break;
+	case RGB:
+		cuted = Mat(height, width, CV_8UC3, Scalar(255, 255, 255));//用来保存切割后的图像
+		break;
+	default:
+		break;
+	}	
 	//计算需要拷贝的区域
 	int start_image_x = max(Ox, 0), start_image_y = max(Oy, 0),
 		end_image_x = min(Ox + width, image.cols), end_image_y = min(Oy + height, image.rows);
@@ -88,10 +121,31 @@ bool QWX_ScaleImage::scale_cut_first(double _position_kx, double _position_ky, d
 		for (int j = start_image_x, y = start_cut_x; j < end_image_x; j++, y++)
 		{
 			//拷贝每个元素，这样比较慢，待改成memcpy内存拷贝
-			cuted.at<Vec3b>(x, y) = image.at<Vec3b>(i, j);
+			switch (type)
+			{
+			case Gray:
+				cuted.at<uchar>(x, y) = image.at<uchar>(i, j);
+				//(Vec3b*)(cuted.data+i*cuted.step+
+				break;
+			case RGB:
+				cuted.at<Vec3b>(x, y) = image.at<Vec3b>(i, j);
+				//(Vec3b*)(cuted.data+i*cuted.step+
+				break;
+			default:
+				break;
+			}
+			
 		}
 	}
-	resize(cuted, _src, Size(400, 400), 0, 0, INTER_NEAREST);//缩放
+	resize(cuted, resized, Size(400, 400), 0, 0, INTER_NEAREST);//缩放
+	resized.copyTo(_src);
 
 	return true;
+}
+
+Point QWX_ScaleImage::QWX_get_position(double _position_kx, double _position_ky)
+{
+	int position_x = Ox + width*_position_kx,
+		position_y = Oy + height*_position_ky;//计算鼠标位置指向的像素点在原图像坐标系中的坐标
+	return Point(position_x, position_y);
 }

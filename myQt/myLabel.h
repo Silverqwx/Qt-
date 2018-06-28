@@ -5,6 +5,7 @@
 #include <QWheelEvent>
 #include <QMouseEvent>
 #include "ScaleImage.h"
+#include "QWX_Optimized_Position_Orientation.h"
 
 class QWX_myLabel :public QLabel
 {
@@ -19,9 +20,11 @@ private:
 	void mousePressEvent(QMouseEvent* event);//重载鼠标点击槽函数
 	void wheelEvent(QWheelEvent *event);//重载滚轮槽函数
 	void mouseMoveEvent(QMouseEvent* event);//重载鼠标移动槽函数
+	void load_image();
 
 private slots:
-	void load_image_Event();//载入图像槽函数
+	void load_rgb_image_Event();//载入图像槽函数
+	void load_gray_image_Event();
 
 public slots:
 	//void Coordinate_Update_Event(QMouseEvent* event, QLabel *label);

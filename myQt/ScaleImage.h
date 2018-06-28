@@ -5,9 +5,16 @@
 
 using namespace cv;
 
+enum QWX_ImageType
+{
+	Gray,
+	RGB
+};
+
 class QWX_ScaleImage
 {
 public:
+	QWX_ImageType type;//图像类型
 	Mat image;//保存载入的原图像
 	Mat resized;//保存尺度变换后的图像
 	//保存上一次的切割区域信息
@@ -28,6 +35,7 @@ public:
 	//_scale_k为此次缩放比例系数
 	//_src用来返回变换后图像
 	bool scale_cut_first(double _position_kx, double _position_ky, double _scale_k, Mat &_src);
+	Point QWX_get_position(double _position_kx, double _position_ky);
 };
 
 #endif // !SCALEIMAGE
