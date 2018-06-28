@@ -1,9 +1,14 @@
 #include "ScaleImage.h"
 
-QWX_ScaleImage::QWX_ScaleImage() :Ox(0), Oy(0), width(400), height(400), k(1.0)
+QWX_ScaleImage::QWX_ScaleImage() :Ox(0), Oy(0), width(400), height(400), k(1.0), show_width(400.0), show_height(400.0)
 {
 	/*Ox = (image.cols - 400) / 2;
 	Oy = (image.rows - 400) / 2;*/
+}
+
+QWX_ScaleImage::QWX_ScaleImage(int _show_width, int _show_height) :Ox(0), Oy(0), width(_show_width), height(_show_height), k(1.0), show_width(_show_width), show_height(_show_height)
+{
+
 }
 
 void QWX_ScaleImage::init_resize_first()
@@ -27,15 +32,15 @@ void QWX_ScaleImage::init_resize_first()
 	image.copyTo(resized);
 }
 
-void QWX_ScaleImage::init_cut_first()
+void QWX_ScaleImage::init_cut_first(String _filename)
 {
 	switch (type)
 	{
 	case Gray:
-		image = imread("eye.jpg", 0);
+		image = imread(_filename, 0);
 		break;
 	case RGB:
-		image = imread("zoro.jpg");
+		image = imread(_filename);
 		cvtColor(image, image, CV_BGR2RGB);//变换三个通道，Mat和QImage的数据结构区别
 		break;
 	default:
@@ -50,9 +55,9 @@ void QWX_ScaleImage::init_cut_first()
 	Ox = 0;
 	Oy = 0;
 	//把图像缩放到能全部显示
-	k = min(400.0 / image.cols, 400.0 / image.rows);
-	width = 400.0 / k;
-	height = 400.0 / k;
+	k = min(show_width / image.cols, show_height / image.rows);
+	width = show_width / k;
+	height = show_height / k;
 	resize(image, resized, Size(), k, k);
 	//copyMakeBorder(resized,)
 }
@@ -89,8 +94,8 @@ bool QWX_ScaleImage::scale_cut_first(double _position_kx, double _position_ky, d
 	k *= _scale_k;//改变相对原图像的比例系数
 	int position_x = Ox + width*_position_kx,
 		position_y = Oy + height*_position_ky;//计算鼠标位置指向的像素点在原图像坐标系中的坐标
-	width = 400.0 / k;
-	height = 400.0 / k;//更新此次切割的宽和高
+	width = show_width / k;
+	height = show_height / k;//更新此次切割的宽和高
 	if (width == 0 || height == 0)
 	{
 		k /= _scale_k;
@@ -137,7 +142,7 @@ bool QWX_ScaleImage::scale_cut_first(double _position_kx, double _position_ky, d
 			
 		}
 	}
-	resize(cuted, resized, Size(400, 400), 0, 0, INTER_NEAREST);//缩放
+	resize(cuted, resized, Size(show_width, show_height), 0, 0, INTER_NEAREST);//缩放
 	resized.copyTo(_src);
 
 	return true;
@@ -148,4 +153,22 @@ Point QWX_ScaleImage::QWX_get_position(double _position_kx, double _position_ky)
 	int position_x = Ox + width*_position_kx,
 		position_y = Oy + height*_position_ky;//计算鼠标位置指向的像素点在原图像坐标系中的坐标
 	return Point(position_x, position_y);
+}
+
+QImage QWX_ScaleImage::QWX_Mat2QImage(const Mat &_mat)
+{
+	uchar *pcv = (uchar*)_mat.data;
+	QImage out;
+	switch (type)
+	{
+	case Gray:
+		out = QImage(pcv, _mat.cols, _mat.rows, _mat.step, QImage::Format_Grayscale8);
+		break;
+	case RGB:
+		out = QImage(pcv, _mat.cols, _mat.rows, _mat.step, QImage::Format_RGB888);
+		break;
+	default:
+		break;
+	}
+	return out;
 }

@@ -85,6 +85,37 @@ float QWX_Optimized_Position_Orientation::QWX_getvalue(const Mat &_src, int _u, 
 	return value;
 }
 
+Mat QWX_Optimized_Position_Orientation::QWX_gethist(const Mat &_src, int _u, int _v)
+{	
+	Mat out(100, 360, CV_8UC1, Scalar(0));
+	if (_u<kernel_mid_y || _u >= _src.rows - kernel_mid_y || _v<kernel_mid_x || _v >= _src.cols - kernel_mid_x)
+	{
+		//cout << "太过靠近边缘，不进行处理！！！" << endl;
+		return out;
+	}
+	vector<int> f(360);
+	float fmax = 0.0;
+	float r = CV_PI / 180;
+	for (int i = 0; i < 360; i++)
+	{
+		float temp = QWX_getvalue(_src, _u, _v, i*r);
+		f[i] = temp;
+		if (temp>fmax) fmax = temp;
+	}
+	if (fmax == 0.0)
+		return out;
+	for (int i = 0; i < 360; i++)
+	{
+		int h = 99 - f[i] / fmax * 99;
+		if (h < 0)
+			int j = 0;
+		out.at<uchar>(h, i) = 255;
+	}
+
+	return out;
+}
+
+
 QWX_Ftheta QWX_Optimized_Position_Orientation::QWX_dichotomy(const Mat &_src, int _u, int _v, float L_theta, float R_theta)
 {
 	float L_value = QWX_getvalue(_src, _u, _v, L_theta),
@@ -109,3 +140,4 @@ QWX_Ftheta QWX_Optimized_Position_Orientation::QWX_dichotomy(const Mat &_src, in
 	
 	return result;
 }
+
