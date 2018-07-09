@@ -19,7 +19,7 @@ public:
 	QWX_ScaleImage scale_image;//图像尺度变换类对象，用来实现图像的尺度变换（缩放）
 	QLabel *coordinate_label;//显示坐标的标签控件指针，和ui中的label_2指向相同
 	void mousePressEvent(QMouseEvent* event);//重载鼠标点击槽函数
-	void wheelEvent(QWheelEvent *event);//重载滚轮槽函数
+	//void wheelEvent(QWheelEvent *event);//重载滚轮槽函数
 	void mouseMoveEvent(QMouseEvent* event);//重载鼠标移动槽函数
 	void load_image();
 

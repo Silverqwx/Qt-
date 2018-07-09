@@ -28,6 +28,7 @@ public:
 	QWX_ScaleImage();
 	QWX_ScaleImage(int _show_width, int _show_height);
 	void init_resize_first();//先缩放后切割方式的初始化函数
+	void init_cut_first(const Mat &_src);
 	void init_cut_first(String _filename);//先切割后缩放方式的初始化函数
 	//先缩放后切割方式的尺度变换（缩放）函数
 	//_position_kx，_position_ky代表鼠标位置在标签中的相对位置（比例关系）,为坐标值与宽或高的比值

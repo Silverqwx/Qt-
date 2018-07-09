@@ -3,6 +3,7 @@
 QWX_myResultLabel::QWX_myResultLabel(QLabel *_label, QWidget *_parent) :coordinate_label(_label), QLabel(_parent)
 {
 	setText("init");
+	scale_image = QWX_ScaleImage(400, 400);
 	//image = new QImage;
 }
 
@@ -21,42 +22,42 @@ void QWX_myResultLabel::mousePressEvent(QMouseEvent* event)
 //	setText("wheel");
 //}
 
-void QWX_myResultLabel::wheelEvent(QWheelEvent *event)
-{
-	Mat scaled;//Mat对象，准备存放尺度变换过后的图像,用于显示
-	bool err = true;//标志位，判断缩放是否出错
-	QPoint point = event->pos();//获取鼠标位置在标签空间坐标系中的坐标
-	double kx = point.x() / 400.0,
-		ky = point.y() / 400.0;//计算鼠标当前位置在标签中的比例关系（相对位置）
-	if (event->delta() > 0)
-	{		
-		err = scale_image.scale_cut_first(kx, ky, 1.2, scaled);//滚轮往上滚，放大，系数1.2,
-	}
-	else
-	{
-		err = scale_image.scale_cut_first(kx, ky, 0.8, scaled);//滚轮向下滚，缩小，系数0.8
-	}
-	if (!err) return;//如果出错，返回，结束此次事件
-	//用Mat对象构造QImage对象，用于显示
-	uchar *pcv = (uchar*)scaled.data;
-	QImage temp;
-	switch (scale_image.type)
-	{
-	case Gray:
-		temp = QImage(pcv, scale_image.resized.cols, scale_image.resized.rows, scale_image.resized.step, QImage::Format_Grayscale8);
-		break;
-	case RGB:
-		temp = QImage(pcv, scale_image.resized.cols, scale_image.resized.rows, scale_image.resized.step, QImage::Format_RGB888);
-		break;
-	default:
-		break;
-	}
-	setPixmap(QPixmap::fromImage(temp));
-}
+//void QWX_myResultLabel::wheelEvent(QWheelEvent *event)
+//{
+//	Mat scaled;//Mat对象，准备存放尺度变换过后的图像,用于显示
+//	bool err = true;//标志位，判断缩放是否出错
+//	QPoint point = event->pos();//获取鼠标位置在标签空间坐标系中的坐标
+//	double kx = point.x() / 400.0,
+//		ky = point.y() / 400.0;//计算鼠标当前位置在标签中的比例关系（相对位置）
+//	if (event->delta() > 0)
+//	{		
+//		err = scale_image.scale_cut_first(kx, ky, 1.2, scaled);//滚轮往上滚，放大，系数1.2,
+//	}
+//	else
+//	{
+//		err = scale_image.scale_cut_first(kx, ky, 0.8, scaled);//滚轮向下滚，缩小，系数0.8
+//	}
+//	if (!err) return;//如果出错，返回，结束此次事件
+//	//用Mat对象构造QImage对象，用于显示
+//	uchar *pcv = (uchar*)scaled.data;
+//	QImage temp;
+//	switch (scale_image.type)
+//	{
+//	case Gray:
+//		temp = QImage(pcv, scale_image.resized.cols, scale_image.resized.rows, scale_image.resized.step, QImage::Format_Grayscale8);
+//		break;
+//	case RGB:
+//		temp = QImage(pcv, scale_image.resized.cols, scale_image.resized.rows, scale_image.resized.step, QImage::Format_RGB888);
+//		break;
+//	default:
+//		break;
+//	}
+//	setPixmap(QPixmap::fromImage(temp));
+//}
 
 void QWX_myResultLabel::load_image()
 {
-	String filename = "eye.jpg";
+	String filename = "zoro.jpg";
 	scale_image.init_cut_first(filename);//初始化
 	//用Mat对象构造QImage对象，用于显示
 	/*uchar *pcv = (uchar*)scale_image.resized.data;

@@ -9,6 +9,7 @@ public:
 	QWX_myResultLabel *result_label;
 	explicit QWX_myLabel(QLabel *_label, QWX_myResultLabel *_result_label, QWidget *_parent = 0);
 	void mouseMoveEvent(QMouseEvent* event);//重载鼠标移动槽函数
+	void wheelEvent(QWheelEvent *event);//重载滚轮槽函数
 };
 
 #endif // !QWX_MYRESULTLABEL

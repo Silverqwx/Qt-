@@ -2,13 +2,12 @@
 
 QWX_ScaleImage::QWX_ScaleImage() :Ox(0), Oy(0), width(400), height(400), k(1.0), show_width(400.0), show_height(400.0)
 {
-	/*Ox = (image.cols - 400) / 2;
-	Oy = (image.rows - 400) / 2;*/
+	type = Gray;
 }
 
 QWX_ScaleImage::QWX_ScaleImage(int _show_width, int _show_height) :Ox(0), Oy(0), width(_show_width), height(_show_height), k(1.0), show_width(_show_width), show_height(_show_height)
 {
-
+	type = Gray;
 }
 
 void QWX_ScaleImage::init_resize_first()
@@ -32,12 +31,25 @@ void QWX_ScaleImage::init_resize_first()
 	image.copyTo(resized);
 }
 
+void QWX_ScaleImage::init_cut_first(const Mat &_src)
+{
+	_src.copyTo(image);
+	Ox = 0;
+	Oy = 0;
+	//把图像缩放到能全部显示
+	k = min(show_width / image.cols, show_height / image.rows);
+	width = show_width / k;
+	height = show_height / k;
+	resize(image, resized, Size(), k, k);
+}
+
 void QWX_ScaleImage::init_cut_first(String _filename)
 {
 	switch (type)
 	{
 	case Gray:
 		image = imread(_filename, 0);
+		//image = Mat(400, 400, CV_8UC1, Scalar(128));
 		break;
 	case RGB:
 		image = imread(_filename);

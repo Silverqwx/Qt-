@@ -46,9 +46,10 @@ public:
 	void QWX_init(const Mat &_kernel, float _resolution = 1.0, float _min_extremum_range = 20.0);
 	float QWX_compute(const Mat &_src, int _u, int _v, int _radius = 0);
 	Mat QWX_gethist(const Mat &_src, int _u, int _v);
+	void consGabor();
 private:
-	vector<int> QWX_rotate(float _theta);
-	float QWX_convolution(const Mat &_src, const vector<int> &_rotated_kernel, int _u, int _v);
+	vector<float> QWX_rotate(float _theta);
+	float QWX_convolution(const Mat &_src, const vector<float> &_rotated_kernel, int _u, int _v);
 	float QWX_getvalue(const Mat &_src, int _u, int _v, float _theta);
 	QWX_Ftheta QWX_dichotomy(const Mat &_src, int _u, int _v, float L_theta, float R_theta);
 	

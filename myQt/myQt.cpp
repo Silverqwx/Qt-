@@ -15,8 +15,8 @@ QWX_myQt::QWX_myQt(QWidget *parent)
 	//打开鼠标追踪，以便实时显示坐标信息
 	ui.centralWidget->setMouseTracking(true);
 	setMouseTracking(true);
-	mylabel->setMouseTracking(true);
 	result_label->setMouseTracking(true);
+	mylabel->setMouseTracking(true);	
 	//连接加载图像按钮的点击信号和标签对象的加载图像槽
 	connect(this->ui.load_rgb_image, SIGNAL(clicked()), this->mylabel, SLOT(load_rgb_image_Event()));
 	connect(this->ui.load_gray_image, SIGNAL(clicked()), this->mylabel, SLOT(load_gray_image_Event()));
